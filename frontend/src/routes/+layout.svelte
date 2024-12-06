@@ -16,9 +16,13 @@
 		</main>
 
 		<footer>
-			<p>
-				visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to learn about SvelteKit
-			</p>
+			<a 
+				href="https://github.com/JacobKurtzbergsNickname/bird_stack" 
+				target="_blank" 
+				rel="noopener noreferrer"
+				aria-label="Visit the bird_stack GitHub repository">
+				🐦 Visit the bird_stack GitHub repository 🐦‍⬛
+			</a>
 		</footer>
 	</div>
 </ParaglideJS>
