@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "bird-stack"
+version = "0.1.0"
+description = "\"Bird-themed PoC\""
+authors = ["Kirby <korbinian.brunner@web.de>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+robyn = "^0.64.2"
+fauna = "^2.4.0"
+python-dotenv = "^1.0.1"
+mypy = "^1.13.0"
+pydantic = "^2.10.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+start = "bird_stack.app:main"
+
+[tool.mypy]
+ignore_missing_imports = true

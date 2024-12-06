@@ -1,0 +1,2 @@
+### get_all_birds
+GET http://localhost:4024/birds
