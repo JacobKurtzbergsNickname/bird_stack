@@ -1,4 +1,23 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
+    import { getBirds } from '$lib/api';
+
+    let birds: any[] = [];
+    let error: string | null = null;
+
+    onMount(async () => {
+        try {
+            const data = await getBirds();
+            birds = data.birds;
+			console.log(birds);
+        } catch (err) {
+            if (err instanceof Error) {
+                error = err.message;
+            } else {
+                error = String(err);
+            }
+        }
+    });
 </script>
 
 <svelte:head>
@@ -8,10 +27,7 @@
 
 <section>
 	<h1>Here be birds</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
+	<p>🐦</p>
 
 </section>
 
@@ -26,21 +42,5 @@
 
 	h1 {
 		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
 	}
 </style>

@@ -14,7 +14,7 @@ def transform_bird_data(raw_result: QuerySuccess) -> ExtendedQuerySuccess[List[D
     """Transform raw FaunaDB query results into Pydantic models."""
     print("Raw result:", raw_result)  # See complete result
     print("Raw data structure:", raw_result.data)  # See data structure
-    
+
     # Transform assuming bird IS the data
     transformed_data = [
         Document(
@@ -25,7 +25,7 @@ def transform_bird_data(raw_result: QuerySuccess) -> ExtendedQuerySuccess[List[D
         )
         for bird in raw_result.data
     ]
-    
+
     return ExtendedQuerySuccess(
         data=transformed_data,
         query_tags=raw_result.query_tags,

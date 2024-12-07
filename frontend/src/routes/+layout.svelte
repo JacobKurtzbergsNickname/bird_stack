@@ -28,10 +28,14 @@
 </ParaglideJS>
 
 <style>
+	@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 	.app {
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+		font-family: "Press Start 2P", sans-serif;
+		color: ghostwhite;
+		background-color: steelblue;
 	}
 
 	main {
