@@ -1,5 +1,5 @@
 import { mdsvex } from 'mdsvex';
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-netlify';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -9,12 +9,11 @@ const config = {
     preprocess: [vitePreprocess(), mdsvex()],
 
     kit: {
-        // Configure the static adapter with a custom output directory
-        adapter: adapter({
-            pages: 'build', // Output directory for built pages
-            assets: 'build', // Output directory for built assets
-            fallback: null
-        })
+        // Configure the Netlify adapter
+        adapter: adapter(),
+        alias: {
+            $lib: './src/lib'
+        }
     },
 
     extensions: ['.svelte', '.svx']
