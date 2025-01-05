@@ -1,16 +1,15 @@
 """Utility functions for working with models."""
 from datetime import datetime, timezone
 from os import getenv
-from typing import List
 from dotenv import load_dotenv
 from fauna.encoding import QuerySuccess
-from bird_stack.db.models import Document, ExtendedQuerySuccess, Module, BirdData
+from bird_stack.db.models import Document, ExtendedQuerySuccess, Module, BirdData, BirdQueryResult, BirdList
 
 # Dotenv
 load_dotenv()
 FICTIONAL_BIRD_COLLECTION = getenv("FICTIONAL_BIRD_COLLECTION", "FictionalBirds")
 
-def transform_bird_data(raw_result: QuerySuccess) -> ExtendedQuerySuccess[List[Document[BirdData]]]:
+def transform_bird_data(raw_result: QuerySuccess) -> BirdQueryResult:
     """Transform raw FaunaDB query results into Pydantic models."""
     print("Raw result:", raw_result)  # See complete result
     print("Raw data structure:", raw_result.data)  # See data structure
@@ -26,8 +25,10 @@ def transform_bird_data(raw_result: QuerySuccess) -> ExtendedQuerySuccess[List[D
         for bird in raw_result.data
     ]
 
+    list_data = BirdList(transformed_data)
+
     return ExtendedQuerySuccess(
-        data=transformed_data,
+        data=list_data,
         query_tags=raw_result.query_tags,
         static_type=raw_result.static_type,
         stats=raw_result.stats,
@@ -36,3 +37,6 @@ def transform_bird_data(raw_result: QuerySuccess) -> ExtendedQuerySuccess[List[D
         txn_ts=raw_result.txn_ts,
         schema_version=raw_result.schema_version
     )
+
+
+#TODO: Add a transform function for a single bird. :)

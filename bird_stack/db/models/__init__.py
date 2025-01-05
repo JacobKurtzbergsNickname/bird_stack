@@ -8,7 +8,7 @@ from .base import (
     ExtendedQuerySuccess,
 )
 
-from .bird_data import BirdData, BirdsResponse
+from .bird_data import BirdData, BirdsResponse, BirdQueryResult, BirdList
 from .utils import transform_bird_data
 
 __all__ = [
@@ -19,7 +19,9 @@ __all__ = [
 
     # BirdData models
     "BirdData", 
+    "BirdList",
     "BirdsResponse",
+    "BirdQueryResult",
 
     # Helper functions
     "transform_bird_data"

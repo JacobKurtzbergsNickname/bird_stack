@@ -1,2 +1,5 @@
 ### get_all_birds
-GET http://localhost:4024/birds
+GET http://localhost:4024/api/birds
+
+### get_bird
+GET http://localhost:4024/api/birds/416526284281086155
