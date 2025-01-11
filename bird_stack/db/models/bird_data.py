@@ -7,6 +7,7 @@ from bird_stack.db.models.base import Document, ExtendedQuerySuccess
 class BirdData(BaseModel):
     """Specific structure for the `data` field in the `Document` model."""
     name: str
+    image: str
     region: Optional[str]
     countries: List[str]
     appearances: List[str]

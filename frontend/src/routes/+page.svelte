@@ -1,14 +1,15 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { getBirds } from '$lib/api';
+	import BirdItem from '$lib/components/BirdItem.svelte';
 
     let birds: any[] = [];
     let error: string | null = null;
 
     onMount(async () => {
+        console.log('Fetching birds');
         try {
-            const data = await getBirds();
-            birds = data.birds;
+            birds = await getBirds();
 			console.log(birds);
         } catch (err) {
             if (err instanceof Error) {
@@ -26,8 +27,12 @@
 </svelte:head>
 
 <section>
-	<h1>Here be birds</h1>
-	<p>🐦</p>
+	<h1>🐦 Mythological Birds Galore! 🐦</h1>
+    <ul>
+        {#each birds as bird}
+            <BirdItem bird={bird} />
+        {/each}
+    </ul>
 
 </section>
 
@@ -35,12 +40,17 @@
 	section {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
 		align-items: center;
 		flex: 0.6;
 	}
 
 	h1 {
 		width: 100%;
+        padding-top: 20px;
 	}
+
+    ul {
+        list-style-type: none;
+        padding-top: 20px;
+    }
 </style>
